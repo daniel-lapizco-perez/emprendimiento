@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <style>
+        nav a {
+            color: #d64161;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+        .empleado
+        .ticket
+        .comentario{
+            padding: 20px;
+            margin: 10px;
+            background-color: #f7f4f4;
+        }
+
+        .review{
+            margin-left: 50px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{url_for('index')}}">Lista de empleados</a>
+        <a href="{{url_for('create_empleado')}}">Crear nuevo empleado</a>
+        <a href="{{url_for('tickets')}}">Lista de tickets</a>
+        <a href="{{url_for('create_ticket')}}">Crear nuevo ticket</a>
+        <a href="{{url_for('comentarios')}}">Lista de comentarios</a>
+        <a href="{{url_for('create_comentario')}}">Crear nuevo comentarios</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

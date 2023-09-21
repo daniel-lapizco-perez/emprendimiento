@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Comentarios {% endblock %}</h1>
+    {% for comentario in comentarios %}
+        <div class="comentario">
+            <h3>#{{ comentario[0] }} - {{ comentario[1] }} - {{ comentario[2] }} - {{ comentario[3] }}</h3>
+        </div>
+    {% endfor %}
+{% endblock %}

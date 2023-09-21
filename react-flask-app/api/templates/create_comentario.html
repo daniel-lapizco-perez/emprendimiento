@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{% block title %} Agregar nuevo comentario {% endblock %}</h1>
+    <form method="post">
+        <p>    
+            <textarea name="descripcion"
+                placeholder="Descripcion"
+                rows="15"
+                cols="60"
+                ></textarea>
+        </p>
+        <p>
+            <label for="id_ticket">ID ticket</label>
+            <input type="number" name="id_ticket"
+                placeholder="ID ticket">
+            </input>
+        </p>
+
+        <p>
+            <label for="created_by">Creado por</label>
+            <input type="number" name="created_by"
+                placeholder="Creado por">
+            </input>
+        </p>
+        
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+{% endblock %}
