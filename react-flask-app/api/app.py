@@ -1,6 +1,6 @@
 import psycopg2
 
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, jsonify
 
 from datetime import datetime, timezone
 
@@ -17,7 +17,7 @@ def get_connection():
     return conn
 
 
-@app.route('/')
+@app.route('/empleados')
 def index():
     conn = get_connection()
     cur = conn.cursor()
@@ -25,7 +25,8 @@ def index():
     empleados = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('index.html', empleados=empleados)
+    print(empleados)
+    return empleados
 
 @app.route('/create_empleado/', methods=('GET', 'POST'), endpoint='create_empleado')
 def create_empleado():
@@ -48,7 +49,7 @@ def create_empleado():
 
     return render_template('create_empleado.html')
 
-@app.route('/tickets', endpoint='tickets')
+@app.route('/tickets')
 def tickets():
     conn = get_connection()
     cur = conn.cursor()
@@ -56,7 +57,8 @@ def tickets():
     tickets = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('tickets.html', tickets=tickets)
+    print(tickets)
+    return tickets
 
 @app.route('/create_ticket/', methods=('GET', 'POST'), endpoint='create_ticket')
 def create_ticket():
@@ -86,7 +88,7 @@ def create_ticket():
         return redirect('tickets')
     return render_template('create_ticket.html')
 
-@app.route('/comentarios', endpoint='comentarios')
+@app.route('/comentarios')
 def comentarios():
     conn = get_connection()
     cur = conn.cursor()
@@ -94,7 +96,7 @@ def comentarios():
     comentarios = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template('comentarios.html', comentarios=comentarios)
+    return comentarios
 
 @app.route('/create_comentario/', methods=('GET', 'POST'), endpoint='create_comentario')
 def create_ticket():
